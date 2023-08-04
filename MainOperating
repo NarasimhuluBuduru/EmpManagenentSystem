@@ -1,1 +1,74 @@
+package employeeManegementSystem;
+
+import java. util.Scanner;
+
+public class Main {
+	final static boolean order=true;
+	public static void menu() {
+		System. out.println("*****Employee Management System******"
+				+"\n1.Add Employee"
+				+"\n2.View Employee"
+				+"\n3.Update Employee"
+				+"\n4.Delete Employee"
+				+"\n5.View All Employees"
+				+"\n6.Exist");
+	
+	}
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		EmployeeServices es=new EmployeeServices();
+		
+		do {
+			menu();
+			System.out.println("ente the choice");
+			int choice=sc.nextInt();
+			switch (choice) {
+			     case 1: {
+			      	System.out.println("Add Employee");
+               es.addEmp();
+				
+				      break;
+			       }
+            case 2: {
+            	System.out.println("View Employee");
+				      es.viewEmp();
+			        	break;
+		         	}
+            case 3: {
+            	System.out.println("Update Employee");
+              es.updateEmp();
+				
+			         	break;
+	          		}
+             case 4: {
+            	 System.out.println("Delete Employee");
+               es.deleteEmp();
+				
+				       break;
+			         }
+             case 5: {
+            	 System.out.println("View All Employees");
+            	 es.viewAllEmp();
+	
+	            break;
+              }
+             case 6: {
+            	 System.out.println("Thank You For Using Application");
+            	 System.exit(0);
+	
+            	 break;
+             }
+			default:
+				System.out.println("check once your choice");
+				
+			}
+			
+			
+		}while(order);
+	
+
+	}
+
+}
 
