@@ -1,0 +1,119 @@
+package EmployeeManegementSystem;
+
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class EmployeeServices {
+    HashSet<EmployeeDetials> empset = new HashSet<EmployeeDetials>();
+
+    EmployeeDetials emp1 = new EmployeeDetials(101, "narasimhulu", 23, "developer", 45000);
+    EmployeeDetials emp2 = new EmployeeDetials(102, "Srinadh", 21, "tester", 55000);
+    EmployeeDetials emp3 = new EmployeeDetials(103, "Sangu", 26, "devops", 65000);
+    EmployeeDetials emp4 = new EmployeeDetials(104, "lokesh", 22, "automation", 75000);
+    EmployeeDetials emp5 = new EmployeeDetials(105, "pavan", 26, "devployee engg", 95000);
+    EmployeeDetials emp6 = new EmployeeDetials(106, "jayasurya", 25, "cloud enng.", 85000);
+
+    Scanner sc = new Scanner(System.in);
+    int id;
+    String name;
+    int age;
+    String job;
+    double salary;
+    boolean found;
+
+    public EmployeeServices() {
+        empset.add(emp1);
+        empset.add(emp2);
+        empset.add(emp3);
+        empset.add(emp4);
+        empset.add(emp5);
+        empset.add(emp6);
+
+    }
+
+    public void viewAllEmp() {
+        for (EmployeeDetials em : empset) {
+            System.out.println(em);
+
+        }
+    }
+
+    public void viewEmp() {
+        System.out.println("enter the id");
+        id = sc.nextInt();
+        for (EmployeeDetials em : empset) {
+            if (em.getId() == id) {
+                System.out.println(em);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("id is not persent");
+        }
+
+    }
+
+    public void updateEmp() {
+        System.out.println("enter the id");
+        id = sc.nextInt();
+        for (EmployeeDetials em : empset) {
+            if (em.getId() == id) {
+                System.out.println("update name");
+                name = sc.nextLine();
+                em.setName(name);
+
+                System.out.println("enter the salary");
+                salary = sc.nextDouble();
+                em.setSalary(salary);
+                found = true;
+                System.out.println("update the data sucessfully");
+                System.out.println(em);
+            }
+        }
+        if (!found) {
+            System.out.println("id is not persent");
+        } else {
+            System.out.println("update the data sucessfully");
+        }
+
+    }
+
+    public void deleteEmp() {
+        System.out.println("enter the id");
+        id = sc.nextInt();
+        EmployeeDetials empdelete = null;
+        for (EmployeeDetials em : empset) {
+            if (em.getId() == id) {
+                empdelete = em;
+                found = true;
+
+            }
+        }
+        if (!found) {
+            System.out.println("id is not persent");
+        } else {
+            empset.remove(empdelete);
+            System.out.println("employee delete sucessfully");
+        }
+    }
+
+    public void addEmp() {
+        System.out.println("enter the id");
+        id = sc.nextInt();
+        System.out.println("enter the name");
+        name = sc.nextLine();
+        System.out.println("enter the age");
+        age = sc.nextInt();
+        System.out.println("enter the job");
+        job = sc.nextLine();
+        System.out.println("enter the salary");
+        salary = sc.nextDouble();
+
+        EmployeeDetials emp = new EmployeeDetials(id, name, age, job, salary);
+        empset.add(emp);
+        System.out.println(empset);
+        System.out.println("add the employee detials sucessfully");
+
+    }
+
+}
